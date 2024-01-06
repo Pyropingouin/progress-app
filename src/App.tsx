@@ -8,14 +8,16 @@ function App() {
     {
       id: 1,
       description: "first Product",
-      amount: 3.25,
-      category: "Groceries",
+      amount: 3,
+      category: "Informatique",
+      date: "3 janvier",
     },
     {
       id: 2,
       description: "second Product",
-      amount: 5.0,
-      category: "Utilities",
+      amount: 5,
+      category: "Informatique",
+      date: "4 janvier",
     },
   ]);
 

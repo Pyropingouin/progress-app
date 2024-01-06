@@ -5,6 +5,8 @@ interface Expense {
   description: string;
   amount: number;
   category: string;
+  //TODO: changer en date
+  date: string;
 }
 
 interface Props {
@@ -23,6 +25,7 @@ const ExpenseList = ({ expenses, onDelete }: Props) => {
           <th>Description</th>
           <th>Amount</th>
           <th>Category</th>
+          <th>Date</th>
           <th></th>
         </tr>
       </thead>
@@ -30,8 +33,9 @@ const ExpenseList = ({ expenses, onDelete }: Props) => {
         {expenses.map((expense) => (
           <tr key={expense.id}>
             <td>{expense.description}</td>
-            <td>{expense.amount}</td>
+            <td>{expense.amount} minutes</td>
             <td>{expense.category}</td>
+            <td>{expense.date}</td>
             <td>
               <button
                 className="btn btn-outline-danger"
@@ -47,10 +51,8 @@ const ExpenseList = ({ expenses, onDelete }: Props) => {
         <tr>
           <td>Total</td>
           <td>
-            $
-            {expenses
-              .reduce((acc, expense) => expense.amount + acc, 0)
-              .toFixed(2)}
+            {expenses.reduce((acc, expense) => expense.amount + acc, 0) + " "}
+            minutes
           </td>
           <td></td>
           <td></td>

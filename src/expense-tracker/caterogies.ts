@@ -1,8 +1,9 @@
 const categories = [
-  "Groceries",
-  "Utilities",
-  "Entertainment",
-  "Jambon",
+  "Informatique",
+  "Administration",
+  "Université",
+  "Gym",
+  "Warhammer",
 ] as const;
 
 export default categories;
