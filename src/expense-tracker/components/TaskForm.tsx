@@ -18,19 +18,19 @@ const schema = z.object({
   date: z.string(),
 });
 
-type ExpenseFormData = z.infer<typeof schema>;
+type TaskFormData = z.infer<typeof schema>;
 
 interface Props {
-  onSubmit: (data: ExpenseFormData) => void;
+  onSubmit: (data: TaskFormData) => void;
 }
 
-const ExpenseForm = ({ onSubmit }: Props) => {
+const TaskForm = ({ onSubmit }: Props) => {
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm<ExpenseFormData>({ resolver: zodResolver(schema) });
+  } = useForm<TaskFormData>({ resolver: zodResolver(schema) });
 
   return (
     <form
@@ -104,4 +104,4 @@ const ExpenseForm = ({ onSubmit }: Props) => {
   );
 };
 
-export default ExpenseForm;
+export default TaskForm;

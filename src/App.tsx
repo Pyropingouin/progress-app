@@ -1,20 +1,20 @@
 import { useState } from "react";
-import ExpenseList from "./expense-tracker/components/ExpenseList";
-import ExpenseFilter from "./expense-tracker/components/ExpenseFilter";
-import ExpenseForm from "./expense-tracker/components/ExpenseForm";
+import TaskList from "./expense-tracker/components/TaskList";
+import TaskFilter from "./expense-tracker/components/TaskFilter";
+import TaskForm from "./expense-tracker/components/TaskForm";
 
 function App() {
-  const [expenses, setExpenses] = useState([
+  const [tasks, setTasks] = useState([
     {
       id: 1,
-      description: "first Product",
+      description: "first task",
       amount: 3,
       category: "Informatique",
       date: "2023-01-03",
     },
     {
       id: 2,
-      description: "second Product",
+      description: "second task",
       amount: 5,
       category: "Informatique",
       date: "2023-01-04",
@@ -23,29 +23,30 @@ function App() {
 
   const [selectedCategory, setSelectedCategory] = useState("");
 
-  const visibleExpenses = selectedCategory
-    ? expenses.filter((e) => e.category === selectedCategory)
-    : expenses;
+  const visibleTasks = selectedCategory
+    ? tasks.filter((e) => e.category === selectedCategory)
+    : tasks;
 
   return (
     <div>
       <div className="mb-5">
-        <ExpenseForm
-          onSubmit={(expense) =>
-            setExpenses([...expenses, { ...expense, id: expenses.length + 1 }])
+        <TaskForm
+          onSubmit={(task) =>
+            //TODO: Trouver un autre moyen pour les id, parce que si on delete une task, le length diminue, ce qui peut causer des problèmes
+            setTasks([...tasks, { ...task, id: tasks.length + 1 }])
           }
         />
       </div>
 
       <div className="mb-3">
-        <ExpenseFilter
+        <TaskFilter
           onSelectedCategory={(category) => setSelectedCategory(category)}
         />
       </div>
 
-      <ExpenseList
-        expenses={visibleExpenses}
-        onDelete={(id) => setExpenses(expenses.filter((e) => e.id !== id))}
+      <TaskList
+        tasks={visibleTasks}
+        onDelete={(id) => setTasks(tasks.filter((e) => e.id !== id))}
       />
     </div>
   );

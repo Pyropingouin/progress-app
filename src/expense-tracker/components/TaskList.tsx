@@ -1,6 +1,6 @@
 import React from "react";
 
-interface Expense {
+interface Task {
   id: number;
   description: string;
   amount: number;
@@ -10,11 +10,11 @@ interface Expense {
 }
 
 interface Props {
-  expenses: Expense[];
+  tasks: Task[];
   onDelete: (id: number) => void;
 }
-const ExpenseList = ({ expenses, onDelete }: Props) => {
-  if (expenses.length === 0) {
+const TaskList = ({ tasks: tasks, onDelete }: Props) => {
+  if (tasks.length === 0) {
     return null;
   }
 
@@ -30,17 +30,17 @@ const ExpenseList = ({ expenses, onDelete }: Props) => {
         </tr>
       </thead>
       <tbody>
-        {expenses.map((expense) => (
-          <tr key={expense.id}>
-            <td>{expense.date}</td>
-            <td>{expense.description}</td>
-            <td>{expense.amount} minutes</td>
-            <td>{expense.category}</td>
+        {tasks.map((task) => (
+          <tr key={task.id}>
+            <td>{task.date}</td>
+            <td>{task.description}</td>
+            <td>{task.amount} minutes</td>
+            <td>{task.category}</td>
 
             <td>
               <button
                 className="btn btn-outline-danger"
-                onClick={() => onDelete(expense.id)}
+                onClick={() => onDelete(task.id)}
               >
                 Delete
               </button>
@@ -53,7 +53,7 @@ const ExpenseList = ({ expenses, onDelete }: Props) => {
           <td>Total</td>
           <td></td>
           <td>
-            {expenses.reduce((acc, expense) => expense.amount + acc, 0) + " "}
+            {tasks.reduce((acc, task) => task.amount + acc, 0) + " "}
             minutes
           </td>
           <td></td>
@@ -63,4 +63,4 @@ const ExpenseList = ({ expenses, onDelete }: Props) => {
   );
 };
 
-export default ExpenseList;
+export default TaskList;
