@@ -43,6 +43,18 @@ const ExpenseForm = ({ onSubmit }: Props) => {
       })}
     >
       <div className="mb-3">
+        <label htmlFor="date" className="form-label">
+          Date
+        </label>
+        <input
+          {...register("date")}
+          id="date"
+          type="text"
+          className="form-control"
+        />
+        {errors.date && <p className="text-danger">{errors.date.message}</p>}
+      </div>
+      <div className="mb-3">
         <label htmlFor="description" className="form-label">
           Description
         </label>
@@ -86,18 +98,6 @@ const ExpenseForm = ({ onSubmit }: Props) => {
         {errors.category && (
           <p className="text-danger">{errors.category.message}</p>
         )}
-      </div>
-      <div className="mb-3">
-        <label htmlFor="date" className="form-label">
-          Date
-        </label>
-        <input
-          {...register("date")}
-          id="date"
-          type="text"
-          className="form-control"
-        />
-        {errors.date && <p className="text-danger">{errors.date.message}</p>}
       </div>
 
       <button className="btn btn-primary">Submit</button>
