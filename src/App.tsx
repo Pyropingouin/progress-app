@@ -10,14 +10,14 @@ function App() {
       description: "first Product",
       amount: 3,
       category: "Informatique",
-      date: "3 janvier",
+      date: "2023-01-03",
     },
     {
       id: 2,
       description: "second Product",
       amount: 5,
       category: "Informatique",
-      date: "4 janvier",
+      date: "2023-01-04",
     },
   ]);
 

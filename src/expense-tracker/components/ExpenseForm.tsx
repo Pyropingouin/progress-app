@@ -15,10 +15,7 @@ const schema = z.object({
   category: z.enum(categories, {
     errorMap: () => ({ message: "Category is required" }),
   }),
-  date: z
-    .string()
-    .min(3, { message: "date should be at least 3 characters." })
-    .max(50),
+  date: z.string(),
 });
 
 type ExpenseFormData = z.infer<typeof schema>;
@@ -38,6 +35,7 @@ const ExpenseForm = ({ onSubmit }: Props) => {
   return (
     <form
       onSubmit={handleSubmit((data) => {
+        console.log(data);
         onSubmit(data);
         reset();
       })}
@@ -46,10 +44,11 @@ const ExpenseForm = ({ onSubmit }: Props) => {
         <label htmlFor="date" className="form-label">
           Date
         </label>
+
         <input
           {...register("date")}
           id="date"
-          type="text"
+          type="date"
           className="form-control"
         />
         {errors.date && <p className="text-danger">{errors.date.message}</p>}
